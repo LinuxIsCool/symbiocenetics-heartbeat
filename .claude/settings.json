@@ -1,0 +1,42 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/git-status.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "extraKnownMarketplaces": {
+    "time-awareness": {
+      "source": {
+        "source": "github",
+        "repo": "linuxiscool/claude-plugins-public"
+      }
+    },
+    "regen": {
+      "source": {
+        "source": "github",
+        "repo": "gaiaaiagent/regen-ai-claude"
+      }
+    },
+    "planning": {
+      "source": {
+        "source": "github",
+        "repo": "OthmanAdi/planning-with-files"
+      }
+    }
+
+  },
+  "enabledPlugins": {
+    "temporal@linuxiscool-claude-plugins-public": true,
+    "koi@regen-ai": true,
+    "ledger@regen-ai": true,
+    "planning-with-files@planning-with-files": true
+  }
+}

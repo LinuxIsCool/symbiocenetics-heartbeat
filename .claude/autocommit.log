@@ -1,0 +1,10 @@
+[2026-02-03T18:35:23.767051] SKIP - Pure request, no transition word
+[2026-02-03T18:50:09.548428] SKIP - Pure request, no transition word
+[2026-02-03T18:51:24.230581] SKIP - Greeting, no approval signal
+[2026-02-03T18:52:06.028160] SKIP - User reports error ("not working")
+[2026-02-03T19:06:09.659039] SKIP - Greeting, no approval or transition word
+[2026-02-03T19:06:58.432193] SKIP - Question, not approval
+[2026-02-03T19:09:00.878428] SKIP - Pure request, no transition word
+[2026-02-03T19:13:29.518185] SKIP - Question, no approval signal
+[2026-02-03T19:16:18.254647] SKIP - Pure request, no transition word
+[2026-02-03T19:20:14.861087] SKIP - User expresses disapproval of work
