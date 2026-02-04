@@ -117,9 +117,16 @@ possible code, but not available today — the existing API is REST, not MCP.
 
 - **Status**: Future option. Requires server-side work on the KOI API.
 
-### Decision: Architecture B
+### Decision: Architecture B → Revised to Architecture E
 
-Architecture B (the Uniswap pattern) is the clear winner for Phase 2:
+Architecture B (the Uniswap pattern) was the initial recommendation. It remains
+the reference architecture for GitHub Actions execution and serves as a fallback.
+However, the primary automation path has been revised to **Architecture E: Local
+Cron + Max Plan**, which eliminates all API costs by running Claude Code in
+headless mode on a local server authenticated via Max plan subscription. See
+`@.claude/specs/phase-2-local-automation.md` for the full supplement.
+
+Architecture B's strengths remain relevant as a fallback:
 
 1. **It works today.** No new code beyond the agent file and workflow YAML.
 2. **The agent file pattern solves the skill gap.** `.claude/agents/daily-digest.md`
