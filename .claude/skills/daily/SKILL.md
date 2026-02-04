@@ -9,7 +9,7 @@ web search, and historic digests into a comprehensive report on the Regen ecosys
 ## Behavior
 
 1. Parse arguments:
-   - `--date YYYY-MM-DD` — generate for a specific date (defaults to yesterday)
+   - `--date YYYY-MM-DD` — generate for a specific date (defaults to today)
    - `--template name` — use a specific template (defaults to the value in
      `settings.json` at `defaults.template.daily`)
    - `--character name` — voice the digest through a character persona
@@ -66,7 +66,7 @@ web search, and historic digests into a comprehensive report on the Regen ecosys
    ---
    ```
 
-8. Write to `content/digests/YYYY/MM/DD/index.md` (create directories as needed)
+8. Write to `content/digests/YYYY/MM/DD/daily.md` (create directories as needed)
 9. Also render the full digest to the terminal
 
 ## Example Invocations
@@ -88,5 +88,5 @@ web search, and historic digests into a comprehensive report on the Regen ecosys
 
 ## Output
 
-A markdown file at `content/digests/YYYY/MM/DD/index.md` with frontmatter, plus
+A markdown file at `content/digests/YYYY/MM/DD/daily.md` with frontmatter, plus
 terminal output of the same content.

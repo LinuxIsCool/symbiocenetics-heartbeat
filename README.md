@@ -29,7 +29,7 @@ Data flows through four stages. First, MCP tools query live sources: the KOI kno
 regen-heartbeat/
 ├── content/                    Quartz content root
 │   ├── index.md                Homepage
-│   ├── digests/                Digest archive (YYYY/MM/DD/index.md)
+│   ├── digests/                Digest archive (YYYY/MM/DD/daily.md)
 │   └── docs/                   MCP documentation (Diataxis framework)
 ├── templates/                  Digest blueprints by cadence
 │   ├── daily/                  Daily templates (active)

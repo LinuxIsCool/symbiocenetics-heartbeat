@@ -243,7 +243,7 @@ description: Generate a daily digest for Regen Network, RegenAI, and the Regen C
 Body should specify the complete behavior:
 
 1. Parse arguments: `--date`, `--template`, `--character`
-2. Default date to yesterday if not specified
+2. Default date to today if not specified
 3. Load the template from `templates/daily/{name}.md`
 4. Read the template's section structure and source annotations
 5. For each section, query the appropriate data sources:
@@ -296,7 +296,7 @@ sources:
 ---
 ```
 
-9. Write to `content/digests/YYYY/MM/DD/index.md`
+9. Write to `content/digests/YYYY/MM/DD/daily.md`
 10. Also render to terminal
 
 The skill should include example invocations:

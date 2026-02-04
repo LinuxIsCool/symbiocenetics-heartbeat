@@ -119,11 +119,11 @@ regen-heartbeat/
 │       └── YYYY/
 │           └── MM/
 │               ├── DD/
-│               │   └── index.md         # daily digest
+│               │   └── daily.md         # daily digest
 │               ├── weekly/
 │               │   └── YYYY-WNN.md      # weekly digest (ISO week)
 │               └── monthly/
-│                   └── index.md         # monthly digest
+│                   └── monthly.md       # monthly digest
 ├── templates/
 │   ├── daily/
 │   │   └── default.md
@@ -393,7 +393,7 @@ explicitly requests it.
 Generates a daily digest for a given date.
 
 **Arguments:**
-- `--date YYYY-MM-DD` — The date to generate for. Defaults to yesterday.
+- `--date YYYY-MM-DD` — The date to generate for. Defaults to today.
 - `--template name` — Template to use. Defaults to `settings.json` value.
 - `--character name` — Voice the output through a character persona.
 
@@ -410,10 +410,10 @@ Generates a daily digest for a given date.
    - **Historic Digests**: Read previous daily digests for comparison
 4. Synthesize findings into a coherent digest following the template structure
 5. If `--character` is set, voice the digest through that character
-6. Write the output to `content/digests/YYYY/MM/DD/index.md`
+6. Write the output to `content/digests/YYYY/MM/DD/daily.md`
 7. Add appropriate YAML frontmatter (date, template, character, sources consulted)
 
-**Output:** Written to file at `content/digests/YYYY/MM/DD/index.md`. Also rendered
+**Output:** Written to file at `content/digests/YYYY/MM/DD/daily.md`. Also rendered
 to the terminal.
 
 

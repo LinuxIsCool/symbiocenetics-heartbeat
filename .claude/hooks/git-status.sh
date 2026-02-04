@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# Stop hook: show git status after each Claude response
+# UserPromptSubmit hook: inject git status into Claude's context
 #
-# Uses both output channels:
-#   systemMessage    → visible to the user in the terminal
-#   additionalContext → visible to Claude in the next turn
+# Outputs hookSpecificOutput.additionalContext so Claude sees the
+# current branch and working tree state at the start of each turn.
 
 cd "$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
 
@@ -20,9 +19,8 @@ python3 -c "
 import json, sys
 msg = sys.stdin.read().rstrip()
 print(json.dumps({
-    'systemMessage': msg,
     'hookSpecificOutput': {
-        'hookEventName': 'Stop',
+        'hookEventName': 'UserPromptSubmit',
         'additionalContext': msg
     }
 }))

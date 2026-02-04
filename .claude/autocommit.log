@@ -13,3 +13,19 @@
 [2026-02-03T19:25:45.792402] SKIP - Clarification statement, not approval
 [2026-02-03T19:27:44.899428] SKIP - User question, no approval signal
 [2026-02-03T19:32:53.246026] SKIP - Pure request, no transition word
+[2026-02-03T20:45:38.601821] SKIP - Task notification, not user approval
+[2026-02-03T20:50:47.101521] ERROR - No response from Haiku
+[2026-02-03T20:51:26.681690] SKIP - Task notification, not user approval
+[2026-02-03T20:52:53.174197] SKIP - Question, no transition word
+[2026-02-03T20:57:53.979543] SKIP - Multiple requests, no approval signal
+[2026-02-03T21:09:22.245832] SKIP - User requesting new task, not approving previous work
+[2026-02-03T21:15:07.879007] SKIP - Slash command
+[2026-02-03T21:23:22.780082] SKIP - Pure request, no transition word
+[2026-02-03T21:27:13.867562] SKIP - Pure request, no transition word
+[2026-02-03T21:31:17.836234] SKIP - User reports bug (off by one error)
+[2026-02-03T21:38:51.453222] SKIP - User reporting hook error, not approving changes
+[2026-02-03T21:40:15.463270] SKIP - Question, no approval signal
+[2026-02-03T21:41:49.497058] SKIP - User expresses uncertainty, not approval
+[2026-02-03T21:43:13.595302] SKIP - User asking clarifying question about system behavior
+[2026-02-03T21:45:01.850622] SKIP - Pure request, no transition word
+[2026-02-03T21:48:47.033349] SKIP - User making new request, not approving previous work
