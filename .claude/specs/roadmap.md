@@ -48,6 +48,19 @@ where anyone can browse the digests.
 
 **Goal:** Build the temporal rollup system and automate generation via GitHub Actions.
 
+**Architecture decision:** Phase 2 uses `anthropics/claude-code-action@v1` (the
+Uniswap pattern) for all automated workflows. This was chosen over three alternatives
+(Python + REST, Claude Agent SDK, native MCP connector) based on research into
+six production repositories. The action reads CLAUDE.md, respects project conventions,
+and provides full MCP tool access. Authentication uses `anthropic_api_key` (not OIDC)
+due to a known cron bug ([Issue #814](https://github.com/anthropics/claude-code-action/issues/814)).
+
+**Key architectural pattern:** `.claude/agents/` files bridge interactive skills and
+headless CI execution. The agent file contains the same instructions as the skill;
+the delivery mechanism changes, not the intelligence.
+
+**Full specification:** `@.claude/specs/phase-2.md`
+
 **What gets built:**
 
 ### Commands
@@ -69,6 +82,17 @@ where anyone can browse the digests.
   `--year YYYY` (defaults to current), `--template`, `--character`. Output:
   `content/digests/YYYY/yearly/yearly.md`. Generated on solstices, equinoxes, and
   New Year.
+
+### Agent Files
+
+Agent files are the CI-compatible equivalent of skills:
+
+| Agent File | Skill Equivalent | Purpose |
+|------------|------------------|---------|
+| `.claude/agents/daily-digest.md` | `.claude/skills/daily/SKILL.md` | Daily generation |
+| `.claude/agents/weekly-digest.md` | `.claude/skills/weekly/SKILL.md` | Weekly rollup |
+| `.claude/agents/monthly-digest.md` | `.claude/skills/monthly/SKILL.md` | Monthly rollup |
+| `.claude/agents/yearly-digest.md` | `.claude/skills/yearly/SKILL.md` | Yearly rollup |
 
 ### Rollup Logic
 
@@ -99,33 +123,29 @@ turning points, the transformations.
 - Full yearly template with annual narrative, key milestones, quantitative
   retrospective, governance evolution, ecocredit market annual review,
   ecosystem growth, and year-ahead outlook
+- Templates gain `rollup` and `comparison` fields in frontmatter for rollup-aware
+  generation
 
 ### GitHub Actions Automation
 
-Cron jobs for each cadence:
+Cron workflows using `anthropics/claude-code-action@v1` with `--mcp-config`,
+`--dangerously-skip-permissions`, and `anthropic_api_key`:
 
-| Cadence | Schedule | Cron Expression |
-|---------|----------|-----------------|
-| Daily | Every day at 06:00 UTC | `0 6 * * *` |
-| Weekly | Mon, Wed, Fri at 07:00 UTC | `0 7 * * 1,3,5` |
-| Monthly | 1st and 15th at 08:00 UTC | `0 8 1,15 * *` |
-| Yearly | Solstices, equinoxes, New Year | Manual triggers with schedule |
+| Cadence | Schedule | Cron Expression | Model | Max Turns |
+|---------|----------|-----------------|-------|-----------|
+| Daily | Every day at 08:00 UTC | `0 8 * * *` | Sonnet | 50 |
+| Weekly | Mon, Wed, Fri at 10:00 UTC | `0 10 * * 1,3,5` | Sonnet | 75 |
+| Monthly | 1st and 15th at 12:00 UTC | `0 12 1,15 * *` | Opus | 100 |
+| Yearly | Manual dispatch | — | Opus | 150 |
 
-Each Action:
+Each workflow:
 1. Checks out the repository
-2. Sets up Claude Code with MCP access
-3. Runs the appropriate command
-4. Commits the generated digest
+2. Creates `/tmp/mcp-config.json` with secrets injected from GitHub environment
+3. Runs `claude-code-action@v1` with the agent file prompt and `--mcp-config`
+4. Commits the generated digest as `regen-heartbeat[bot]`
 5. Pushes to main (triggers Quartz deploy)
 
-### Enhanced Templates
-
-- Templates gain a `rollup` section in frontmatter specifying which lower-cadence
-  digests to read and how far back to look
-- Templates gain a `comparison` section specifying how to compare with the previous
-  period at the same cadence
-- Character-specific template variants become possible (e.g., a "poetic weekly"
-  template that the VoiceOfNature character uses)
+Estimated monthly cost: $67–165.
 
 ### Historic Cross-Referencing
 

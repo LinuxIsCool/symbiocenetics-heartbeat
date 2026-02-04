@@ -62,7 +62,13 @@ The site is deployed to GitHub Pages at the organization's github.io domain. No 
 domain is required.
 
 **Automation**: GitHub Actions cron jobs trigger digest generation at each cadence.
-Phase 1 uses manual generation; Phase 2 introduces automation.
+Phase 1 uses manual generation. Phase 2 introduces automation via
+`anthropics/claude-code-action@v1`, which runs Claude Code headlessly in CI with
+full MCP access. The automation uses the agent file pattern
+(`.claude/agents/*.md`) to bridge interactive skills and headless execution, with
+MCP servers configured at runtime through `/tmp/mcp-config.json` and secrets
+injected from GitHub environment variables. See `@.claude/specs/phase-2.md` for
+the full automation architecture.
 
 
 ## 4. Architecture
@@ -102,9 +108,15 @@ regen-heartbeat/
 │   │   │   └── SKILL.md
 │   │   └── {character-name}/
 │   │       └── SKILL.md                 # one per character
+│   ├── agents/                          # CI-compatible agent files (Phase 2)
+│   │   ├── daily-digest.md
+│   │   ├── weekly-digest.md
+│   │   ├── monthly-digest.md
+│   │   └── yearly-digest.md
 │   ├── specs/
 │   │   ├── regen-heartbeat.md           # this file
 │   │   ├── phase-1.md
+│   │   ├── phase-2.md
 │   │   └── roadmap.md
 │   ├── hooks/
 │   │   └── git-status.sh
@@ -527,6 +539,7 @@ This repository teaches regens how to use Claude Code by example. It demonstrate
 | MCP integration | `settings.json`, `docs/reference/` |
 | Plugins | `.claude/settings.json` |
 | Hooks | `.claude/hooks/` |
+| Agent files (CI skills) | `.claude/agents/` |
 | Specs and planning | `.claude/specs/` |
 | Template systems | `templates/` |
 | Documentation (Diataxis) | `docs/` |
@@ -546,8 +559,13 @@ working functionality.
 See `@.claude/specs/phase-1.md` for full details.
 
 **Phase 2 — Temporal Hierarchy & Automation**: `/weekly`, `/monthly`, `/yearly` with
-rollup logic. GitHub Actions cron jobs for all cadences. Historic digest
-cross-referencing. Enhanced templates.
+rollup logic. GitHub Actions cron jobs using `anthropics/claude-code-action@v1` for
+all cadences, with MCP servers configured at runtime via `--mcp-config` and
+authentication via `anthropic_api_key`. The agent file pattern
+(`.claude/agents/*.md`) bridges interactive skills and CI execution. Enhanced
+templates with `rollup` and `comparison` directives. Historic digest
+cross-referencing. Estimated monthly automation cost: $67–165.
+See `@.claude/specs/phase-2.md` for full details.
 
 **Phase 3 — Living Planning System**: `/plans`, `/roadmap`, `/goals`, `/decisions`,
 `/backlog`, `/projects`. Project management directories. Community governance
