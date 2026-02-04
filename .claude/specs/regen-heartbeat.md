@@ -115,7 +115,7 @@ regen-heartbeat/
 │   └── local/                           # gitignored, machine-local
 │       └── specs/
 ├── content/
-│   └── memories/
+│   └── digests/
 │       └── YYYY/
 │           └── MM/
 │               ├── DD/
@@ -410,10 +410,10 @@ Generates a daily digest for a given date.
    - **Historic Digests**: Read previous daily digests for comparison
 4. Synthesize findings into a coherent digest following the template structure
 5. If `--character` is set, voice the digest through that character
-6. Write the output to `content/memories/YYYY/MM/DD/index.md`
+6. Write the output to `content/digests/YYYY/MM/DD/index.md`
 7. Add appropriate YAML frontmatter (date, template, character, sources consulted)
 
-**Output:** Written to file at `content/memories/YYYY/MM/DD/index.md`. Also rendered
+**Output:** Written to file at `content/digests/YYYY/MM/DD/index.md`. Also rendered
 to the terminal.
 
 

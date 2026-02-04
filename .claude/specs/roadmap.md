@@ -35,7 +35,7 @@ architectural context, see `@.claude/specs/regen-heartbeat.md`.
 
 A user clones the repo, runs `/current-events`, and gets a live synthesis of
 Regen-relevant news from the web. They run `/daily`, and a structured daily digest
-is written to `content/memories/YYYY/MM/DD/index.md` with data from KOI, Ledger,
+is written to `content/digests/YYYY/MM/DD/index.md` with data from KOI, Ledger,
 and web search. They add `--character narrator` and get the same digest voiced through
 the Narrator persona. They push the content and GitHub Pages deploys a Quartz site
 where anyone can browse the digests.
@@ -56,18 +56,18 @@ where anyone can browse the digests.
   weekly, synthesizes them into a higher-level summary, and supplements with fresh MCP
   queries for anything the dailies may have missed. Arguments: `--week YYYY-WNN`
   (ISO week, defaults to current), `--template`, `--character`. Output:
-  `content/memories/YYYY/MM/weekly/YYYY-WNN.md`. Generated on Monday, Wednesday,
+  `content/digests/YYYY/MM/weekly/YYYY-WNN.md`. Generated on Monday, Wednesday,
   and Friday.
 
 - **`/monthly`** — Generates a monthly digest. Reads all weekly digests since the last
   monthly, synthesizes them with fresh MCP data. Arguments: `--month YYYY-MM`
   (defaults to current), `--template`, `--character`. Output:
-  `content/memories/YYYY/MM/monthly/index.md`. Generated on the 1st and 15th.
+  `content/digests/YYYY/MM/monthly/index.md`. Generated on the 1st and 15th.
 
 - **`/yearly`** — Generates a yearly digest. Reads all monthly digests since the last
   yearly, synthesizes them with fresh MCP data and a retrospective lens. Arguments:
   `--year YYYY` (defaults to current), `--template`, `--character`. Output:
-  `content/memories/YYYY/yearly/index.md`. Generated on solstices, equinoxes, and
+  `content/digests/YYYY/yearly/index.md`. Generated on solstices, equinoxes, and
   New Year.
 
 ### Rollup Logic
@@ -171,7 +171,7 @@ the Regen ecosystem.
 
 ```
 content/
-├── memories/          # existing digest hierarchy
+├── digests/          # existing digest hierarchy
 ├── plans/
 │   ├── regen-commons/
 │   ├── regen-network/
