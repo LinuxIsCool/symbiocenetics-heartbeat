@@ -1,3 +1,7 @@
+---
+paths:
+  - "*"
+---
 # Workflow Orchestration
 
 SLOW DOWN

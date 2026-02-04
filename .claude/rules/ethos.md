@@ -1,3 +1,7 @@
+---
+paths:
+  - "*"
+---
 # Ethos — Voice, Values, and Way of Working
 
 This repository serves two purposes. First, it generates automated digests for
