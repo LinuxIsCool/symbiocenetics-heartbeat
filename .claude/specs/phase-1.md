@@ -15,7 +15,7 @@ Quartz-powered static site deployed to GitHub Pages.
 When Phase 1 is complete, a user should be able to:
 
 1. Clone the repo and run `/current-events` to get a live synthesis of Regen-relevant news
-2. Run `/daily` to generate a structured daily digest written to `content/memories/`
+2. Run `/daily` to generate a structured daily digest written to `content/digests/`
 3. Run `/daily --character narrator` to get the same digest voiced through a character
 4. Visit the GitHub Pages site and browse published digests
 5. Read the docs and understand how to use the KOI and Ledger MCPs
@@ -38,7 +38,7 @@ context specific to that directory's purpose.
 
 ```
 content/
-content/memories/
+content/digests/
 templates/
 templates/daily/
 templates/weekly/        # empty for now, structure ready for Phase 2
@@ -243,7 +243,7 @@ description: Generate a daily digest for Regen Network, RegenAI, and the Regen C
 Body should specify the complete behavior:
 
 1. Parse arguments: `--date`, `--template`, `--character`
-2. Default date to yesterday if not specified
+2. Default date to today if not specified
 3. Load the template from `templates/daily/{name}.md`
 4. Read the template's section structure and source annotations
 5. For each section, query the appropriate data sources:
@@ -274,7 +274,7 @@ Body should specify the complete behavior:
    - Web search using topics from `settings.json`
 
    **Reflection:**
-   - Read previous daily digests from `content/memories/` for comparison
+   - Read previous daily digests from `content/digests/` for comparison
    - Identify trends, changes, and open questions
 
 6. Synthesize findings into a coherent digest following the template structure
@@ -296,7 +296,7 @@ sources:
 ---
 ```
 
-9. Write to `content/memories/YYYY/MM/DD/index.md`
+9. Write to `content/digests/YYYY/MM/DD/daily.md`
 10. Also render to terminal
 
 The skill should include example invocations:
@@ -638,7 +638,7 @@ When Phase 1 is complete, verify:
 - [ ] `README.md` is updated with project description and commands
 - [ ] `.gitignore` covers local files, node_modules, and build output
 - [ ] Running `/current-events` produces a synthesis of Regen-relevant news
-- [ ] Running `/daily` produces a digest written to `content/memories/`
+- [ ] Running `/daily` produces a digest written to `content/digests/`
 - [ ] Running `/daily --character narrator` produces a voiced digest
 - [ ] The character pipeline (JSON -> output style -> skill -> command) is complete
 - [ ] Documentation reads clearly and covers the KOI and Ledger MCPs

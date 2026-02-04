@@ -1,2 +1,16 @@
+# Claude Code local files
 .claude/local
 .claude/autocommit.log
+
+# Quartz build output
+public/
+.quartz-cache/
+
+# Node
+node_modules/
+
+# OS
+.DS_Store
+
+# Obsidian
+.obsidian/

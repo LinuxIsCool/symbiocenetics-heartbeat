@@ -1,0 +1,36 @@
+{
+  "defaults": {
+    "template": {
+      "daily": "default",
+      "weekly": "default",
+      "monthly": "default",
+      "yearly": "default"
+    },
+    "character": null
+  },
+  "currentEvents": {
+    "topics": [
+      "Regen Network",
+      "ecological credits carbon biodiversity",
+      "regenerative agriculture",
+      "climate finance ReFi",
+      "Cosmos ecosystem IBC",
+      "metacrisis polycrisis",
+      "solarpunk regeneration",
+      "MRV ecological monitoring",
+      "community currencies mutual credit",
+      "bioregionalism watershed governance"
+    ]
+  },
+  "site": {
+    "title": "Regen Heartbeat",
+    "description": "Automated digests for Regen Network, RegenAI, and the Regen Commons",
+    "baseUrl": "https://gaiaaiagent.github.io/regen-heartbeat/",
+    "theme": {
+      "primary": "#22C55E",
+      "secondary": "#16A34A",
+      "background": "#0A0A0A",
+      "text": "#ECECEC"
+    }
+  }
+}
