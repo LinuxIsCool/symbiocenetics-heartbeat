@@ -31,3 +31,27 @@
 [2026-02-03T21:48:47.033349] SKIP - User making new request, not approving previous work
 [2026-02-03T21:49:04.274816] COMMIT - f020e29 - [system] update: hook configuration and documentation
 [2026-02-03T21:50:45.664008] COMMIT - 784dd4d - [system] update: Stop hook configuration in parent settings
+[2026-02-07T20:09:45.996080] SKIP - Slash command
+[2026-02-07T20:11:14.117838] SKIP - Pure request, no transition word
+[2026-02-07T20:11:21.702679] SKIP - Pure request, no transition word
+[2026-02-07T20:11:33.826081] SKIP - Pure request, no transition word
+[2026-02-07T20:11:56.697330] SKIP - Pure request, no transition word
+[2026-02-07T20:13:48.630828] SKIP - Pure request, no transition word
+[2026-02-07T20:14:17.577889] SKIP - Pure request, no transition word
+[2026-02-07T20:16:04.549127] SKIP - Pure request, no transition word
+[2026-02-07T20:16:27.436196] SKIP - Pure request, no transition word
+[2026-02-07T20:16:44.394894] SKIP - Pure request, no transition word
+[2026-02-07T20:18:31.632818] SKIP - Pure request, no transition word
+[2026-02-07T20:19:39.532763] SKIP - Pure request, no transition word
+[2026-02-07T20:20:36.375581] SKIP - User requesting new task, not approving previous work
+[2026-02-07T20:27:38.052740] SKIP - Pure request, no transition word
+[2026-02-07T20:31:08.613980] SKIP - Pure request, no transition word
+[2026-02-07T20:33:44.131360] SKIP - Pure request, no transition word
+[2026-02-07T20:35:14.241285] SKIP - Pure request, no transition word
+[2026-02-07T20:37:08.106722] SKIP - User is requesting action, not approving prior work
+[2026-02-07T21:00:25.068083] SKIP - Task notification, not user approval
+[2026-02-07T21:04:25.576975] SKIP - System task notification, not user approval
+[2026-02-07T21:04:35.898813] SKIP - System task notification, not user approval
+[2026-02-07T21:05:06.143427] SKIP - System notification, not user approval
+[2026-02-08T08:30:36.784238] ERROR - No response from Haiku
+[2026-02-08T08:31:09.012345] SKIP - Slash command detected
