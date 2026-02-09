@@ -14,9 +14,9 @@ Data flows through four stages. First, MCP tools query live sources: the KOI kno
 
 - `/current-events` -- Search the web for current events relevant to the Regen ecosystem
 - `/daily` -- Generate a daily digest with data from KOI, Ledger, and web sources
-- `/weekly` -- Generate a weekly rollup from daily digests *(Phase 2)*
-- `/monthly` -- Generate a monthly rollup from weekly digests *(Phase 2)*
-- `/yearly` -- Generate a yearly rollup from monthly digests *(Phase 2)*
+- `/weekly` -- Generate a weekly rollup synthesizing dailies into pattern analysis
+- `/monthly` -- Generate a monthly rollup distilling weeklies into trend narratives
+- `/yearly` -- Generate a yearly retrospective from monthly digests
 - `/plans` -- View and manage active plans *(Phase 3)*
 - `/roadmap` -- View per-group roadmaps *(Phase 3)*
 - `/goals` -- View and manage goals *(Phase 3)*
@@ -32,11 +32,12 @@ regen-heartbeat/
 │   ├── digests/                Digest archive (YYYY/MM/DD/daily.md)
 │   └── docs/                   MCP documentation (Diataxis framework)
 ├── templates/                  Digest blueprints by cadence
-│   ├── daily/                  Daily templates (active)
-│   ├── weekly/                 Weekly templates (Phase 2)
-│   ├── monthly/                Monthly templates (Phase 2)
-│   └── yearly/                 Yearly templates (Phase 2)
+│   ├── daily/                  Daily templates
+│   ├── weekly/                 Weekly rollup templates
+│   ├── monthly/                Monthly rollup templates
+│   └── yearly/                 Yearly retrospective templates
 ├── .claude/
+│   ├── agents/                 CI-compatible agent files for GitHub Actions
 │   ├── characters/             Character persona definitions (ElizaOS JSON)
 │   ├── output-styles/          Writing style instructions per character
 │   ├── skills/                 Command skills and character skills
@@ -46,7 +47,11 @@ regen-heartbeat/
 ├── quartz.config.ts            Quartz site configuration
 ├── quartz.layout.ts            Quartz page layout
 └── .github/workflows/
-    └── deploy.yml              GitHub Pages deployment
+    ├── deploy.yml              GitHub Pages deployment
+    ├── daily.yml               Automated daily digest generation
+    ├── weekly.yml              Automated weekly rollup generation
+    ├── monthly.yml             Automated monthly rollup generation
+    └── heartbeat-monitor.yml   Verifies daily digests were created
 ```
 
 
@@ -98,6 +103,22 @@ Preview the site locally:
 ```
 npx quartz build --serve
 ```
+
+
+## Automation
+
+Digests are generated automatically via GitHub Actions using `anthropics/claude-code-action@v1` authenticated with a Max plan OAuth token. Each cadence runs on a staggered schedule to ensure lower-cadence digests are available before higher-cadence rollups begin.
+
+| Cadence | Schedule | Model | Agent File |
+|---------|----------|-------|------------|
+| Daily | Every day at 08:00 UTC | Sonnet | `.claude/agents/daily-digest.md` |
+| Weekly | Mon, Wed, Fri at 10:00 UTC | Sonnet | `.claude/agents/weekly-digest.md` |
+| Monthly | 1st and 15th at 12:00 UTC | Opus | `.claude/agents/monthly-digest.md` |
+| Yearly | Manual (solstices, equinoxes, New Year) | Opus | `.claude/agents/yearly-digest.md` |
+
+All workflows support `workflow_dispatch` for manual triggering with custom dates, weeks, months, or model selection. The heartbeat monitor runs daily at 09:00 UTC to verify the previous day's digest was generated.
+
+**Required secrets:** `CLAUDE_CODE_OAUTH_TOKEN` (from `claude setup-token`), `KOI_API_ENDPOINT`.
 
 
 ## Documentation

@@ -3,3 +3,4 @@
 @README.md
 @settings.json
 @.claude/specs/regen-heartbeat.md
+@.claude/agents/README.md

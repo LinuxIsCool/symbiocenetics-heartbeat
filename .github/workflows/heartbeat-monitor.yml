@@ -1,0 +1,22 @@
+name: Heartbeat Monitor
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify daily digest exists
+        run: |
+          YESTERDAY=$(date -u -d yesterday +%Y/%m/%d)
+          if [ ! -f "content/digests/${YESTERDAY}/daily.md" ]; then
+            echo "::warning::Daily digest missing for ${YESTERDAY}"
+          else
+            echo "Daily digest found for ${YESTERDAY}"
+          fi

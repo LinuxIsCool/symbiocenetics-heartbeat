@@ -1,0 +1,77 @@
+name: Weekly Heartbeat
+
+on:
+  schedule:
+    - cron: '0 10 * * 1,3,5'
+  workflow_dispatch:
+    inputs:
+      week:
+        description: 'ISO week YYYY-WNN (default: current week)'
+        required: false
+      model:
+        description: 'Claude model'
+        required: false
+        type: choice
+        options:
+          - claude-sonnet-4-5-20250929
+          - claude-opus-4-6
+        default: claude-sonnet-4-5-20250929
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Calculate week identifier
+        id: week
+        run: |
+          if [ -n "${{ github.event.inputs.week }}" ]; then
+            echo "target=${{ github.event.inputs.week }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "target=$(date -u +%Y-W%V)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create MCP configuration
+        run: |
+          cat > /tmp/mcp-config.json << EOF
+          {
+            "mcpServers": {
+              "regen-koi": {
+                "command": "npx",
+                "args": ["-y", "regen-koi-mcp@latest"],
+                "env": {
+                  "KOI_API_ENDPOINT": "${{ secrets.KOI_API_ENDPOINT }}"
+                }
+              }
+            }
+          }
+          EOF
+
+      - name: Generate weekly digest
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            Generate a weekly digest for the Regen ecosystem.
+            Read and follow ALL instructions in: .claude/agents/weekly-digest.md
+            Target week: ${{ steps.week.outputs.target }}
+            IMPORTANT: This is an automated workflow. Complete autonomously.
+          claude_args: |
+            --model ${{ github.event.inputs.model || 'claude-sonnet-4-5-20250929' }}
+            --max-turns 75
+            --mcp-config /tmp/mcp-config.json
+            --dangerously-skip-permissions
+
+      - name: Commit and push
+        run: |
+          git config user.name "regen-heartbeat[bot]"
+          git config user.email "heartbeat@regen.network"
+          git add content/digests/
+          git diff --cached --quiet || \
+            (git commit -m "weekly: ${{ steps.week.outputs.target }}" && git push)

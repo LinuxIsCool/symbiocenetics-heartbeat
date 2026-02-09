@@ -1,0 +1,80 @@
+name: Daily Heartbeat
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Target date YYYY-MM-DD (default: yesterday)'
+        required: false
+      model:
+        description: 'Claude model'
+        required: false
+        type: choice
+        options:
+          - claude-sonnet-4-5-20250929
+          - claude-opus-4-6
+        default: claude-sonnet-4-5-20250929
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Calculate target date
+        id: date
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            echo "target=${{ github.event.inputs.date }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "target=$(date -u -d yesterday +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create MCP configuration
+        run: |
+          cat > /tmp/mcp-config.json << EOF
+          {
+            "mcpServers": {
+              "regen-koi": {
+                "command": "npx",
+                "args": ["-y", "regen-koi-mcp@latest"],
+                "env": {
+                  "KOI_API_ENDPOINT": "${{ secrets.KOI_API_ENDPOINT }}"
+                }
+              }
+            }
+          }
+          EOF
+
+      - name: Generate daily digest
+        uses: anthropics/claude-code-action@v1
+        with:
+          # Primary: Max plan OAuth token ($0 additional cost)
+          # Fallback: switch to anthropic_api_key if OAuth fails
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            Generate a daily digest for the Regen ecosystem.
+            Read and follow ALL instructions in: .claude/agents/daily-digest.md
+            Target date: ${{ steps.date.outputs.target }}
+            IMPORTANT: This is an automated workflow. Complete autonomously.
+            Write the digest to the correct path in content/digests/.
+          claude_args: |
+            --model ${{ github.event.inputs.model || 'claude-sonnet-4-5-20250929' }}
+            --max-turns 50
+            --mcp-config /tmp/mcp-config.json
+            --dangerously-skip-permissions
+
+      - name: Commit and push
+        run: |
+          git config user.name "regen-heartbeat[bot]"
+          git config user.email "heartbeat@regen.network"
+          git add content/digests/
+          git diff --cached --quiet || \
+            (git commit -m "daily: ${{ steps.date.outputs.target }}" && git push)

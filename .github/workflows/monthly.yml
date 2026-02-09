@@ -1,0 +1,77 @@
+name: Monthly Heartbeat
+
+on:
+  schedule:
+    - cron: '0 12 1,15 * *'
+  workflow_dispatch:
+    inputs:
+      month:
+        description: 'Target month YYYY-MM (default: previous month)'
+        required: false
+      model:
+        description: 'Claude model'
+        required: false
+        type: choice
+        options:
+          - claude-sonnet-4-5-20250929
+          - claude-opus-4-6
+        default: claude-opus-4-6
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Calculate target month
+        id: month
+        run: |
+          if [ -n "${{ github.event.inputs.month }}" ]; then
+            echo "target=${{ github.event.inputs.month }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "target=$(date -u -d 'last month' +%Y-%m)" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create MCP configuration
+        run: |
+          cat > /tmp/mcp-config.json << EOF
+          {
+            "mcpServers": {
+              "regen-koi": {
+                "command": "npx",
+                "args": ["-y", "regen-koi-mcp@latest"],
+                "env": {
+                  "KOI_API_ENDPOINT": "${{ secrets.KOI_API_ENDPOINT }}"
+                }
+              }
+            }
+          }
+          EOF
+
+      - name: Generate monthly digest
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            Generate a monthly digest for the Regen ecosystem.
+            Read and follow ALL instructions in: .claude/agents/monthly-digest.md
+            Target month: ${{ steps.month.outputs.target }}
+            IMPORTANT: This is an automated workflow. Complete autonomously.
+          claude_args: |
+            --model ${{ github.event.inputs.model || 'claude-opus-4-6' }}
+            --max-turns 100
+            --mcp-config /tmp/mcp-config.json
+            --dangerously-skip-permissions
+
+      - name: Commit and push
+        run: |
+          git config user.name "regen-heartbeat[bot]"
+          git config user.email "heartbeat@regen.network"
+          git add content/digests/
+          git diff --cached --quiet || \
+            (git commit -m "monthly: ${{ steps.month.outputs.target }}" && git push)
