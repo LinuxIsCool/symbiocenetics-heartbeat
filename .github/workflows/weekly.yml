@@ -63,6 +63,7 @@ jobs:
             Read and follow ALL instructions in: .claude/agents/weekly-digest.md
             Target week: ${{ steps.week.outputs.target }}
             IMPORTANT: This is an automated workflow. Complete autonomously.
+            CRITICAL: You MUST use the Bash tool to write files. The Write tool does NOT persist to the filesystem in this CI environment. Use Bash with mkdir -p and cat heredoc (cat > path << 'DIGESTEOF' ... DIGESTEOF) to write the digest file to content/digests/. Always verify with ls that the file exists after writing.
           claude_args: |
             --model ${{ github.event.inputs.model || 'claude-sonnet-4-5-20250929' }}
             --max-turns 75

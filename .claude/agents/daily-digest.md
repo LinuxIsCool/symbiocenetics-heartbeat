@@ -69,10 +69,23 @@ Follow those instructions exactly, with the following CI-specific adaptations:
    ---
    ```
 
-7. **CRITICAL — you MUST write the file to disk.** Use these exact steps:
-   a. Run `mkdir -p content/digests/YYYY/MM/DD` using the Bash tool
-   b. Use the **Write tool** to save the complete digest to `content/digests/YYYY/MM/DD/daily.md`
-   c. Do NOT just output the digest as text. It MUST be written as a file.
+7. **CRITICAL — you MUST write the file to disk using the Bash tool.**
+   The Write tool does NOT persist files in this CI environment. You MUST use
+   Bash with a heredoc to write the file. Follow these exact steps:
+
+   a. Run `mkdir -p content/digests/YYYY/MM/DD` using the Bash tool.
+   b. Use the Bash tool to write the file with a heredoc:
+      ```
+      cat > content/digests/YYYY/MM/DD/daily.md << 'DIGESTEOF'
+      ---
+      title: "Daily Heartbeat — ..."
+      ...
+      ---
+
+      ... full digest content ...
+      DIGESTEOF
+      ```
+   c. Do NOT use the Write tool — it does not write to the filesystem in CI.
    d. Verify the file exists with `ls -la content/digests/YYYY/MM/DD/daily.md`
 
 8. Follow the voice and quality standards in `.claude/rules/ethos.md`.
