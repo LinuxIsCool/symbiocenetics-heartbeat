@@ -55,3 +55,16 @@
 [2026-02-07T21:05:06.143427] SKIP - System notification, not user approval
 [2026-02-08T08:30:36.784238] ERROR - No response from Haiku
 [2026-02-08T08:31:09.012345] SKIP - Slash command detected
+[2026-02-08T08:32:05.591220] COMMIT - 1268a5b - [system] update: logging and audit trail
+[2026-02-08T08:32:25.024283] SKIP - Pure request, no transition word
+[2026-02-08T08:34:07.677402] SKIP - Pure request, no transition word
+[2026-02-08T08:35:09.438737] SKIP - Pure request, no transition word
+[2026-02-08T08:36:32.684387] SKIP - Pure request, no transition word
+[2026-02-08T08:38:35.349082] SKIP - Pure request, no transition word
+[2026-02-08T08:40:43.538379] SKIP - Pure request, no transition word or approval signal
+[2026-02-08T08:42:02.741584] SKIP - Pure request, no transition word or approval signal
+[2026-02-09T11:56:32.218199] SKIP - System notification, not user approval
+[2026-02-09T11:56:35.884881] SKIP - System task notification, not user approval
+[2026-02-09T11:56:47.192481] SKIP - User asking question, not approving work
+[2026-02-09T12:00:31.041494] SKIP - System notification, not user approval
+[2026-02-09T12:00:41.762667] SKIP - System notification, not user approval
