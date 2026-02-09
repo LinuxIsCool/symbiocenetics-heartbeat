@@ -66,7 +66,7 @@ jobs:
             Read and follow ALL instructions in: .claude/agents/daily-digest.md
             Target date: ${{ steps.date.outputs.target }}
             IMPORTANT: This is an automated workflow. Complete autonomously.
-            Write the digest to the correct path in content/digests/.
+            CRITICAL: You MUST use the Bash tool to create the directory (mkdir -p) and then use the Write tool to save the digest as a file. Do NOT just output the digest as text — it must be written to disk at content/digests/.
           claude_args: |
             --model ${{ github.event.inputs.model || 'claude-sonnet-4-5-20250929' }}
             --max-turns 50

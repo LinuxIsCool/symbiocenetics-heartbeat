@@ -52,7 +52,7 @@ Follow those instructions exactly, with the following CI-specific adaptations:
    - Compare with the most recent 3–5 days
 
 5. Synthesize into a coherent digest following the template structure.
-6. Write YAML frontmatter:
+6. Compose the full markdown file content including YAML frontmatter:
 
    ```yaml
    ---
@@ -69,5 +69,10 @@ Follow those instructions exactly, with the following CI-specific adaptations:
    ---
    ```
 
-7. Write to `content/digests/YYYY/MM/DD/daily.md`.
+7. **CRITICAL — you MUST write the file to disk.** Use these exact steps:
+   a. Run `mkdir -p content/digests/YYYY/MM/DD` using the Bash tool
+   b. Use the **Write tool** to save the complete digest to `content/digests/YYYY/MM/DD/daily.md`
+   c. Do NOT just output the digest as text. It MUST be written as a file.
+   d. Verify the file exists with `ls -la content/digests/YYYY/MM/DD/daily.md`
+
 8. Follow the voice and quality standards in `.claude/rules/ethos.md`.
