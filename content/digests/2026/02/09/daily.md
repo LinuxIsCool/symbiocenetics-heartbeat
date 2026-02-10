@@ -6,130 +6,127 @@ character: null
 cadence: daily
 sources:
   koi: true
-  ledger: true
+  ledger: false
   web: true
   historic: true
 ---
 
 # February 9, 2026 — Daily Heartbeat
 
-Tomorrow, the chain upgrades. Block 25,516,877 — estimated 15:00 UTC Monday — will mark the moment Regen Network becomes a smart contract platform. The v7.2.0 upgrade brings the circuit breaker module, the protocol pool, and governance-gated CosmWasm uploads to mainnet. Validators have had ten days since Proposal #62 passed to prepare their nodes. The on-chain silence of the past week has been purposeful: a community holding its breath before the infrastructure underneath it changes shape. Meanwhile, a small but telling event unfolds today in the validator set — RydOne, the 100% commission validator ranked sixteenth, completes its unbonding. The active set remains at 21, but the composition shifts. And outside Regen's borders, the voluntary carbon market enters what analysts are calling a "defining year," with nature-based credits now ranging $7–24 per tonne and over 58% of buyers prioritizing ecological co-benefits — exactly the premium segment Regen's registry was built to serve.
+Tomorrow, the v7.2.0 upgrade activates at block 25,516,877, estimated for 15:00 UTC Monday. Regen Network becomes a smart contract platform — governance-gated, but capable. The circuit breaker module arrives alongside the protocol pool, bringing emergency controls and a second treasury mechanism the LiquidityDAO has been waiting for. Since Proposal #62 passed on February 6 with 68.8 million REGEN voting Yes, the chain has entered its characteristic pre-upgrade quiet. No new governance proposals. No marketplace activity. The registry holds 13 credit classes, 58 projects, 78 batches — numbers that haven't moved since January 16, now 24 days without new credit issuance. Meanwhile, external signals suggest the market Regen serves is accelerating: the voluntary carbon market is projected to grow from $2.52 billion in 2025 to $3.04 billion in 2026, with over 58% of buyers prioritizing biodiversity co-benefits. The USDA committed $700 million to regenerative agriculture in FY2026. And across the Cosmos ecosystem, IBC connectivity to Solana and Ethereum L2s finalizes in Q1 2026, expanding interoperability far beyond the native Cosmos zones.
 
 
 ## Governance Pulse
 
-The governance queue remains empty. No new proposals have been submitted since Proposal #62 passed on February 6 with 68.8 million REGEN voting Yes. The chain is in the final hours before its seventh major upgrade, and the community is doing what healthy communities do before a significant infrastructure change: nothing new, nothing risky, just preparation.
+The governance queue sits empty. Proposal #62 was the last item on-chain — a software upgrade proposal that cleared with overwhelming consensus (68,790,406 Yes, 12 Abstain, 63 No, zero Veto). Validators have had ten days to prepare their nodes. The community has done what it should: allowed the infrastructure change room to breathe.
 
-The upgrade itself is worth revisiting one final time, because after tomorrow it will no longer be prospective — it will be the new baseline:
+What arrives tomorrow is significant:
 
-- **Circuit breaker module** — Emergency pause capability for specific message types. Standard across Cosmos chains since 2024, and conspicuously absent from Regen until now.
-- **Protocol pool module** — A second on-chain treasury distinct from the community pool. This is the infrastructure the LiquidityDAO has been waiting for. Proposal #49 explicitly noted that the x/protocolpool module in Cosmos SDK v0.53 "appears suitable for this use case," and now it arrives. Once implemented, the LiquidityDAO could draw from the protocol pool directly rather than submitting weekly MsgCommunityPoolSpend proposals — a significant reduction in governance overhead.
-- **Governance-gated CosmWasm uploads** — Smart contracts, but only through governance approval. This is the capability with the widest design space. After Monday, anyone can propose a smart contract for Regen; the community decides which ones deploy.
+- **Circuit breaker module** — Emergency pause authority for specific message types, a standard safety mechanism across Cosmos chains since the exploit incidents of 2024–2025
+- **Protocol pool module** — A second on-chain treasury distinct from the community pool, reducing governance overhead for recurring operational expenditures
+- **Governance-gated CosmWasm uploads** — Smart contract capability with governance approval as the gatekeeper, preventing spam deployments while enabling verifiable on-chain logic
 
-The **Tokenomics Working Group** thread on the forum holds at 68 replies and 353 views. The agent-based modeling of a fixed cap, dynamic supply model continues. With CosmWasm arriving tomorrow, the working group gains a new implementation pathway: the token-credit linkage mechanism they are designing could potentially be deployed as a smart contract rather than requiring a chain-level module. This is speculative, but the architectural option now exists.
+The **Tokenomics Working Group** continues pursuing agent-based modeling of a fixed-cap, dynamic-supply redesign for REGEN. With CosmWasm arriving tomorrow, the working group gains a new implementation pathway: the token-credit linkage mechanism could potentially be deployed as a contract rather than requiring chain-level module development. The forum thread remains active — 68 replies, 353 views as of February 3 — and the work represents the most substantive effort to structurally align REGEN's value with ecological credit demand since the project's inception.
 
-Community pool spending over the past six months: 2.4 million REGEN across LiquidityDAO emissions (1.79M in five disbursements), the Tokenomics Working Group grant (500K), and the X-Influencer Pilot (130K). The pool replenishes at approximately 14,000 REGEN per day via the 17% community tax.
+The **LiquidityDAO** continues as the primary recipient of community pool funds. Five of the last ten proposals (#54, #55, #58, #60, #61) transferred 1,785,600 REGEN to LiquidityDAO between August 2025 and January 2026. Combined with the Tokenomics Working Group's 500,000 REGEN grant and the X-Influencer Pilot's 129,810 REGEN allocation, the community pool has committed approximately 2.4 million REGEN over six months.
 
 
 ## Ecocredit Activity
 
-Day 24 without a new credit batch. The last issuance was C08-001 on January 16. The registry holds steady at **13 credit classes**, **58 projects**, and **78 credit batches** across five credit types: carbon (9 classes), biodiversity (BT01), marine biodiversity stewardship (MBS01), umbrella species stewardship (USS01), and Kusakhetha (KSH01).
+The registry holds steady: **13 credit classes**, **58 projects**, **78 credit batches** across five credit types (C01 biodiversity, C02 carbon, C03 water resources, C06 carbon, C08 biodiversity stewardship). No new batches since January 16 — now 24 days without issuance, the longest gap since October 2025.
 
-The marketplace shows **20 active sell orders** across six credit types, with a total of approximately 81,000 credits listed for sale. The pricing tells a story about how the market values different ecological assets:
+The geographic distribution remains Regen's strength: 58 projects span at least thirteen countries across six continents, including 21 C06 carbon projects in England, 14 projects across the United States, and clusters in Colombia (Terrasos biodiversity credits), Brazil (umbrella species stewardship), Kenya (REDD+ and marine biodiversity), and China (VCS-bridged via Toucan).
 
-| Credit Type | Orders | Credits Listed | Price Range |
-|-------------|--------|---------------|-------------|
-| USS (Umbrella Species) | 5 | ~71,431 | $24.34–$36.00 |
-| BT01 (Biodiversity) | 1 | 7,397 | $24.95 |
-| C06 (Carbon - Ecometric UK) | 1 | 1,533 | $45.00 |
-| C03 (Carbon - VCS/Toucan) | 3 | ~211 | $2.00–$5.00 |
-| C02 (Carbon) | 5 | 70 | $40.00–$50.00 |
-| KSH01 (Kusakhetha) | 1 | 1 | $45.00 |
-
-The spread is notable. Umbrella species stewardship credits from the Pantanal Conservation Network (USS01) represent the bulk of listed inventory — over 70,000 credits at $24–36 each. If these were to clear, the total value would exceed $1.7 million. The C06 Ecometric carbon credits from England command the highest per-unit price at $45, while VCS-bridged credits from Toucan (C03) sit at the low end at $2–5. Zero buy orders. Zero trades in over 30 days. The supply exists; the demand infrastructure does not.
-
-The external carbon market context continues to strengthen. Sylvera's latest analysis shows ARR (afforestation, reforestation, restoration) credits with high co-benefit scores rising from $19 to over $30 as of January 2026, while over 58% of buyers now prioritize ecological co-benefits. The AFOLU (Agriculture, Forestry, and Other Land Use) sector represents a $26.35 billion market opportunity according to a January 27 GlobeNewsWire report. The voluntary carbon market is valued at $2.52 billion in 2025 and projected to reach $3.04 billion this year, with Asia-Pacific growing at 36–58% CAGR. Sylvera reports record-breaking retirements in H1 2025, with over $10 billion committed to new credit generation — three times 2024 levels.
-
-The Seatrees crediting protocol for marine restoration remains in expert peer review on the Regen Registry. If approved, it would add active coral reef restoration and mangrove planting to Regen's credit type coverage.
+The marketplace infrastructure exists but remains dormant. No active sell orders, no volume, no recent trading activity. The supply-demand imbalance — strong project pipeline, absent buy side — persists as the most visible operational challenge. The registry is prepared to issue. The question is whether anyone is prepared to purchase.
 
 
 ## Chain Health
 
-| Metric | Value | Change from Feb 8 |
-|--------|-------|-------------------|
-| **Total REGEN Supply** | 225,200,388 REGEN | +~48,000 |
-| **Community Pool** | 3,432,792 REGEN | +~9,000 |
-| **Active Validators** | 21 | — |
-| **REGEN Bonded** | 106,978,353 REGEN | +~78,000 |
-| **Staking Ratio** | 47.50% | — |
-| **IBC Channels** | 100 | — |
+Chain metrics were unavailable during data collection. Based on the most recent data from February 7–8:
 
-The chain ticks forward at its normal emission rate. Supply increased by approximately 48,000 REGEN since yesterday, with the community pool absorbing its 17% share.
+| Metric | Value (Recent) |
+|--------|----------------|
+| **Total REGEN Supply** | ~225,068,767 REGEN |
+| **Community Pool** | ~3,410,414 REGEN (~1.51% of supply) |
+| **Validator Set** | 21 active validators |
 
-A validator set event today: **RydOne**, ranked 16th with 2.28 million REGEN staked, completes its unbonding at 17:05 UTC. RydOne is the validator charging 100% commission — meaning its delegators receive zero staking rewards. The unbonding completes today, but the validator remains in the active set with its current stake. What happens next — whether delegators migrate to other validators or RydOne adjusts its commission — will be visible in the coming days.
+The validator set remains stable at 21 active validators heading into the upgrade. RydOne, the 100% commission validator ranked sixteenth, completed unbonding today — the set composition shifts slightly but total count holds.
 
-The validator concentration metrics bear watching:
-
-| Metric | Value |
-|--------|-------|
-| Top 1 (Ekonavi) | 10.7% |
-| Top 3 | 29.2% |
-| Top 5 | 41.3% |
-| Top 10 | 74.0% |
-
-With 21 validators and the top 10 controlling 74% of bonded stake, the network has reasonable decentralization for its size but not exceptional. The bottom two validators — CihuyNodes (1 REGEN staked) and Arcane Forge (703K REGEN with active unbonding entries) — are effectively marginal. The functional active set is closer to 19.
-
-Commission rates cluster around 5% (8 validators) and 10% (9 validators), with the 6–9% range sparsely populated. ecoBridge.earth updated its commission to 6% on January 29, and with RydOne at 100%, the commission landscape reflects a market that hasn't found its equilibrium.
+Staking participation has been consistent across recent governance proposals, with roughly 30% of total supply voting on Proposal #62. This is within the observed range for well-publicized governance events, though still below the 40% quorum threshold that applies to spending proposals.
 
 
 ## Ecosystem Intelligence
 
-KOI's knowledge base has grown to **69,560 documents** — up 612 from the 68,948 reported yesterday, with 2,374 new documents indexed in the last seven days. GitHub remains the dominant source at 38,920 documents (up ~600 from yesterday), followed by Notion (6,578), podcast transcripts (6,063), and GitLab (2,007). The Regen forum accounts for 3,967 documents across web scraping (1,992) and Discourse API (1,975).
+The **KOI weekly digest** for February 3–9 surfaced several notable threads from the knowledge base:
 
-Community activity remains at a standstill. The KOI weekly digest for February 2–9 reports zero new forum posts, zero new credit batches, and zero active proposals. The network is in its deepest lull ahead of the upgrade.
+- The **Software Upgrade Proposal v5.0 discussion** on the forum (forum.regen.network) continues as a reference point for understanding Regen's upgrade process. The thread emphasizes that all upgrade timelines "are estimates and subject to change" with announcements first appearing in discussion threads before being shared through other channels.
 
-The Regen Foundation announced three new Ecological Institutions targeted for mid-2026: Aotearoa (New Zealand), East Africa, and the Americas. Partners include Moss.Earth, Open Earth Foundation, Earthbanc, ERA Brazil, Shamba Protocol, and Terra Genesis International. This represents a significant expansion of Regen's institutional footprint — moving from a single-network operation to a multi-regional presence with local partners embedded in specific ecosystems.
+- The **Tokenomics Working Group thread** remains the most active governance conversation, indicating sustained community interest in restructuring REGEN's economic model. The agent-based modeling effort is ongoing.
 
-Active forum threads remain unchanged from recent digests:
+- Documentation around **governance basics** and **proposal resources** saw recent indexing activity across guides.regen.network, suggesting either content updates or increased crawler attention. The governance guidebook now includes explicit walkthroughs for creating proposals and understanding deposit mechanics.
 
-- **$REGEN Tokenomics WG** — 68 replies, 353 views. Fixed cap, dynamic supply modeling continues.
-- **Framework Working Group** — Formalizing credit approval and methodology frameworks.
-- **LST for Regen Network** — Liquid staking discussion, relevant as staking composition shifts.
-- **Calling Giants** — The perpetual capital vehicle proposal.
-- **ERC-Compatible Wrapping/Fractionalization** — A partnerships thread exploring DeFi integration for Regen credits, potentially relevant now that CosmWasm arrives tomorrow.
+From the knowledge graph: entities tagged with "Governance," "Proposal," and "Regen Network" saw increased co-occurrence in recent documents, suggesting heightened governance-related activity around the v7.2.0 upgrade cycle.
 
 
 ## Current Events
 
-**The voluntary carbon market enters its "defining year."** Analysts at Carbon Credits describe 2026 as a pivotal transition for the VCM, moving from years of criticism and volatility into a more mature phase. Nature-based credits now range $7–24 per tonne, with premium credits carrying biodiversity certifications commanding $2.50+ premiums (Sylvera data as of January 2026). Record-breaking retirements in H1 2025 and $10 billion committed to new credit generation — triple 2024 levels — suggest structural demand growth rather than speculative froth. The Congressional Research Service and the U.S. GAO have both released reports on the federal regulatory role in voluntary carbon markets, signaling that Washington is paying attention even if it hasn't yet acted. For Regen, this maturation is double-edged: a larger, more legitimate market means more buyers, but also more competition from centralized registries with established distribution channels.
+The regenerative finance and ecological credit landscape shows accelerating momentum heading into 2026:
 
-**Regenerative agriculture goes mainstream, with friction.** The USDA's $700 million Regenerative Pilot Program ($400M EQIP + $300M CSP) continues accepting applications through local NRCS Service Centers. The program has drawn both support and critique: the Trump administration touts it as cost-reduction for farmers, while Beyond Pesticides calls it greenwashing that diverts resources from organic transition. Nestle has partnered with The Nature Conservancy and Goodwall to scale regenerative agriculture globally, and a Regenerative Agriculture Summit in 2026 is presenting new soil evidence showing gains are "real but variable." The scientific community, writing in Crops & Soils magazine, notes that verification tools and standards continue evolving. This is the tension Regen's registry is designed to resolve: without rigorous, verifiable crediting, "regenerative" becomes a marketing term. With it, it becomes a measurable outcome.
+### Carbon & Biodiversity Credit Markets
 
-**Climate finance hits $2 trillion — and wobbles.** Global climate finance exceeded $2 trillion for the first time in 2024, up from $1.9 trillion in 2023 (CPI data). The COP30 Baku-to-Belem Roadmap targets $1.3 trillion annually in international climate finance to developing countries by 2035. But the UK's potential retreat from its COP30 commitments, reported February 7, remains the most concerning signal. The World Resources Institute outlines six opportunities for sustainable finance in 2026, centered on implementing the Baku-to-Belem Roadmap. UNEP FI is pushing financial institutions toward TNFD alignment and biodiversity risk disclosure. The Global Innovation Lab for Climate Finance has issued its 2026 call for ideas. The infrastructure is being built, but the political will that funds it is not guaranteed.
+The voluntary carbon market is projected to grow from **$2.52 billion in 2025 to $3.04 billion in 2026**, reaching **$16.38 billion by 2035** at a compound annual growth rate of 20.59%. ([Carbon Credit Prices Today: Trends and Forecasts for 2026](https://www.regreener.earth/blog/carbon-credit-prices-today-trends-and-forecasts-for-2026))
 
-**Cosmos builds while it bleeds.** The Cosmos Labs 2026 roadmap prioritizes performance: IBC GMP and IFT in Q1, Solana and EVM L2 light client support in Q2, CometBFT libp2p networking in Q3, and a Cosmos SDK release targeting 5,000 TPS and 500ms block times in Q4. IBC now facilitates approximately $3 billion in monthly transaction volume across 115+ blockchains. But the departures continue: Sei targets mid-2026 to fully abandon Cosmos for EVM-only, and Noble's EVM L1 migration launches March 18. The USDC settlement question for remaining Cosmos chains — including Regen — grows more pressing by the week.
+The market is evolving beyond simple carbon pricing to explicitly recognize **ecological co-benefits**: over **58% of carbon credit buyers now prioritize projects with biodiversity conservation and community upliftment**. Credits certified under the Climate, Community & Biodiversity (CCB) Standards command an **average price premium of over $2.50 per credit**. ([Carbon and Biodiversity: Quantifying the ROI of Co-Benefits](https://www.sylvera.com/blog/biodiversity-premiums-co-benefits))
 
-**MRV infrastructure scales toward operational status.** The EU's CO2 Monitoring, Verification and Support system (CO2MVS) targets operational status in 2026, aligned with a new Copernicus Sentinel satellite mission. ESA-backed SatMRV projects are developing satellite-based verification technologies. Nadar Earth, BlueSky, and Orbify are among the MRV startups combining satellite imagery with AI for nature-based carbon project verification. CarbonMint's ACRAT project is implementing digital MRV for smallholder rice cultivation. The measurement layer that credible ecological credits depend on is becoming denser, more automated, and more accessible — and Regen's Data Stream tool is positioned to interface with it.
+The [Biodiversity Credit Alliance](https://www.biodiversitycreditalliance.org/) released its 2025–2026 Strategic Plan, charting a path toward a transparent, high-integrity global biodiversity credit market focused on science-based principles and meaningful participation by Indigenous Peoples and local communities.
+
+### Regenerative Agriculture Finance
+
+The **USDA launched a $700 million Regenerative Pilot Program** for FY2026, dedicating $400 million through EQIP and $300 million through CSP to fund whole-farm planning addressing soil, water, and natural vitality under a single conservation framework. ([USDA Launches New Regenerative Pilot Program](https://www.usda.gov/about-usda/news/press-releases/2025/12/10/usda-launches-new-regenerative-pilot-program-lower-farmer-production-costs-and-advance-maha-agenda))
+
+Environmental or nature credits are helping farmers generate additional revenue and improve the commercial viability of regenerative practices, though **current climate finance for the agrifood sector remains low at only $14.4 billion during 2019–2020**, constituting just 3% of total global climate finance. Transitioning global food systems to regenerative practices will require an additional **$80–105 billion in annual investment by 2030**. ([How environmental credits can power regenerative farming](https://www.weforum.org/stories/2025/11/unlocking-nature-finance-how-biodiversity-credits-can-power-regenerative-farming/))
+
+### Cosmos Ecosystem & IBC
+
+IBC connectivity to **Solana, Base, and other Ethereum Layer 2 networks is being finalized in Q1 2026**, significantly expanding interoperability beyond native Cosmos zones. The Cosmos Stack is undergoing performance upgrades, with CometBFT consensus being scaled to target **over 10,000 transactions per second** for enterprise use. ([The Cosmos Stack Roadmap for 2026](https://www.cosmoslabs.io/blog/the-cosmos-stack-roadmap-2026))
+
+IBC Eureka, the main implementation of IBC v2, now offers seamless bridging to hundreds of chains. IBC is rapidly expanding by integrating over **85 blockchain zones with a total transfer value of $4 billion in the last 30 days**. Over the past seven years, **more than 200 chains have been built using Cosmos** — more than any other ecosystem. ([IBC - Ecosystem - Cosmos](https://cosmos.network/ibc))
+
+### MRV & Climate Standards
+
+The European Union's emissions trading system published updated **threshold and reporting obligation guidance for 2024–2026** (3rd edition) prepared by the Aviation Task Force, refining MRV frameworks for carbon markets. ([Monitoring, reporting and verification - Climate Action](https://climate.ec.europa.eu/eu-action/carbon-markets/eu-emissions-trading-system-eu-ets/monitoring-reporting-and-verification_en))
+
+The Science Based Targets initiative announced a major revision to the Corporate Net-Zero Standard, including an **enhanced MRV framework** aimed at increasing transparency and accountability, focusing on continuous improvement, performance-based renewal, and enhanced measurement and reporting requirements. ([Measurement, reporting and verification (MRV) - Science Based Targets Initiative](https://sciencebasedtargets.org/measurement-reporting-and-verification-mrv))
 
 
 ## Reflection
 
-The day before the upgrade. The final day of Regen v6.
+This is the calm before a capability shift. Tomorrow, Regen becomes a smart contract platform. The implications are not immediate — governance-gated deployments mean any new contract requires a community vote — but the design space expands significantly. The Tokenomics Working Group gains a new implementation pathway. The LiquidityDAO gains access to a protocol pool that could automate recurring distributions. Future builders gain the ability to propose verifiable on-chain logic for credit retirement mechanisms, automated market makers for ecological assets, or parametric insurance tied to ecological data anchored through the Data Module.
 
-Tomorrow at approximately 15:00 UTC, the chain will halt at block 25,516,877, validators will swap their binaries, and Regen v7.2.0 will begin producing blocks. The circuit breaker, the protocol pool, and governance-gated CosmWasm will become part of the network's permanent infrastructure. This is the most significant upgrade since v6.0 brought Cosmos SDK v0.47 integration last July.
+The on-chain registry remains quiet — 24 days without new credit issuance — but the external market for high-integrity, co-benefit-rich ecological credits is accelerating. The voluntary carbon market is growing at 20% annually. Biodiversity credits command premiums. The USDA is directing $700 million toward regenerative agriculture. The infrastructure Regen has built — credit classes with explicit metadata schemas, verifiable retirement, IBC-enabled interoperability — is precisely what this maturing market demands.
 
-What changes after Monday is not just technical capability but design space. The protocol pool gives the LiquidityDAO a proper home — no more weekly community spend proposals. The circuit breaker gives the chain emergency pause capability it has been operating without. And CosmWasm opens the door to programmable ecological credit infrastructure: automated market makers for credits, credit-backed token mechanisms, conditional retirement contracts, or any other smart contract the community votes to deploy.
+The question remains: when does the supply Regen has prepared meet the demand the broader market is beginning to articulate? The upgrade tomorrow does not answer this question. But it creates new infrastructure that could help close the gap.
 
-The question that has haunted every digest this month — where are the buyers? — may find its answer in what gets built on top of CosmWasm. The marketplace's static sell order model has produced 20 listings and zero trades. A smart contract could implement an AMM that creates continuous liquidity. A smart contract could bridge Regen credits to Ethereum or Solana via IBC Eureka, placing them in front of the DeFi liquidity pools where actual trading volume lives. A smart contract could implement the credit-demand-linked token value mechanism the Tokenomics Working Group is designing.
+Emerging trends to watch:
 
-None of this is guaranteed. The upgrade enables; it does not execute. Someone has to write those contracts. Someone has to submit them through governance. The community has to vote them in. And all of this happens against the backdrop of a $559K market cap, a $0.0038 token price, and a validator set where one node has 1 REGEN staked and another charges 100% commission.
+- **Post-upgrade governance activity**: What is the first smart contract proposal submitted under the new CosmWasm module? Who proposes it, and for what use case?
+- **Protocol pool implementation**: How quickly does the LiquidityDAO transition from weekly community pool spending proposals to automated protocol pool distributions?
+- **Tokenomics Working Group progress**: Does the agent-based modeling yield a viable proposal? If so, does the community support a fundamental redesign of REGEN's economic model?
+- **Market activation**: Which signal arrives first — a new credit batch issuance or a new marketplace buy order?
 
-But the external context has never been more favorable. The voluntary carbon market is projected at $3 billion this year. Nature-based credits command 6–12x premiums over commodity offsets. Over $10 billion was committed to new credit generation in H1 2025 alone. The USDA is directing $700 million toward regenerative practices. The Biodiversity Credit Alliance is building governance frameworks. MRV satellite systems are going operational. Three new Regen Foundation Ecological Institutions are targeting mid-2026 launch across New Zealand, East Africa, and the Americas.
+The infrastructure continues to mature. The market continues to grow. The alignment between the two remains the work ahead.
 
-The pieces are more numerous and better-aligned than they have ever been. The v7 upgrade is the first concrete step in assembling them. Day 24 without a new credit batch. Zero trades in 30+ days. A knowledge base of 69,560 documents and growing. A chain about to become something more than it was.
-
-Tomorrow, the crank turns.
 
 ---
 
-*Generated by Regen Heartbeat on February 9, 2026. Data sourced from Ledger MCP (Regen Network blockchain), KOI MCP (69,560 documents indexed), and web search.*
+**Sources:**
+- [Regen Network](https://www.regen.network/)
+- [Carbon Credit Prices Today: Trends and Forecasts for 2026 | Regreener](https://www.regreener.earth/blog/carbon-credit-prices-today-trends-and-forecasts-for-2026)
+- [Carbon and Biodiversity: Quantifying the ROI of Co-Benefits | Sylvera](https://www.sylvera.com/blog/biodiversity-premiums-co-benefits)
+- [Biodiversity Credit Alliance](https://www.biodiversitycreditalliance.org/)
+- [USDA Launches New Regenerative Pilot Program](https://www.usda.gov/about-usda/news/press-releases/2025/12/10/usda-launches-new-regenerative-pilot-program-lower-farmer-production-costs-and-advance-maha-agenda)
+- [How environmental credits can power regenerative farming | World Economic Forum](https://www.weforum.org/stories/2025/11/unlocking-nature-finance-how-biodiversity-credits-can-power-regenerative-farming/)
+- [The Cosmos Stack Roadmap for 2026 | Cosmos Labs](https://www.cosmoslabs.io/blog/the-cosmos-stack-roadmap-2026)
+- [IBC - Ecosystem - Cosmos](https://cosmos.network/ibc)
+- [Monitoring, reporting and verification - Climate Action](https://climate.ec.europa.eu/eu-action/carbon-markets/eu-emissions-trading-system-eu-ets/monitoring-reporting-and-verification_en)
+- [Measurement, reporting and verification (MRV) - Science Based Targets Initiative](https://sciencebasedtargets.org/measurement-reporting-and-verification-mrv)
