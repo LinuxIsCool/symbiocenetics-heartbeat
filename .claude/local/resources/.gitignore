@@ -1,0 +1,3 @@
+# DVC-managed data files — tracked by DVC, not git
+# DVC automatically adds entries here when you `dvc add` resources.
+# The .dvc pointer files ARE tracked by git (allowed through parent .gitignore).

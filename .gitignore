@@ -1,10 +1,21 @@
-# Claude Code local files
-.claude/local
+# Claude Code local files — ignore contents, not the directory itself
+.claude/local/**
+
+# Allow resource registry metadata through (not the repos themselves)
+!.claude/local/resources/
+!.claude/local/resources/.gitignore
+!.claude/local/resources/.dvcignore
+!.claude/local/resources/README.md
+!.claude/local/resources/registry.yaml
 .claude/autocommit.log
 
 # Quartz build output
 public/
 .quartz-cache/
+
+# Python / uv
+.venv/
+__pycache__/
 
 # Node
 node_modules/

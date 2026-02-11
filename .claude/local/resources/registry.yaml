@@ -1,0 +1,19 @@
+# Resource Registry
+#
+# Lists all repos to clone into .claude/local/resources/.
+# Each entry becomes {owner}/{repo}/ on disk.
+#
+# Restore all resources:  ./scripts/restore-resources.sh
+# Add a new resource:     add an entry here, then run restore
+
+linuxiscool:
+  agentnet:
+    url: git@github.com:LinuxIsCool/agentnet.git
+  mothership-bridge:
+    url: git@github.com:LinuxIsCool/mothership-bridge.git
+  mothership-claude:
+    url: git@github.com:LinuxIsCool/mothership-claude.git
+  mothership-local:
+    url: git@github.com:LinuxIsCool/mothership-local.git
+  website:
+    url: git@github.com:LinuxIsCool/website.git

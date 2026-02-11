@@ -1,0 +1,4 @@
+# Files DVC should skip when scanning for data to track
+.gitignore
+.dvcignore
+README.md

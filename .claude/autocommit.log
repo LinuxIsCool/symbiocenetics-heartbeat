@@ -88,3 +88,6 @@
 [2026-02-09T12:47:24.292046] SKIP - Task completion notification, not user approval
 [2026-02-09T12:52:39.988052] SKIP - Question, no transition word
 [2026-02-09T12:56:13.782813] ERROR - No response from Haiku
+[2026-02-11T12:36:04.846950] SKIP - User is explaining context, not approving previous work
+[2026-02-11T12:53:56.777557] SKIP - User rejects folder structure, asks clarifying question
+[2026-02-11T13:01:09.285311] SKIP - User asking question, no approval signal

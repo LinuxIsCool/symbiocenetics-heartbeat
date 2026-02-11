@@ -1,0 +1,8 @@
+[project]
+name = "symbiocenetics-heartbeat"
+version = "0.1.0"
+description = "Content engine for regenerative ecosystem intelligence"
+requires-python = ">=3.10"
+dependencies = [
+    "dvc>=3.66",
+]
