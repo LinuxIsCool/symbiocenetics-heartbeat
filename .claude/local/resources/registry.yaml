@@ -3,10 +3,27 @@
 # Lists all repos to clone into .claude/local/resources/.
 # Each entry becomes {owner}/{repo}/ on disk.
 #
-# Restore all resources:  ./scripts/restore-resources.sh
-# Add a new resource:     add an entry here, then run restore
+# Restore all resources:  /claude-resources:restore
+# Sync from disk:         /claude-resources:sync
+# Add a resource:         /claude-resources:add owner/repo
 
 linuxiscool:
+  regenai-agents:
+    url: git@github.com:LinuxIsCool/regenai-agents.git
+  omnimind-public:
+    url: git@github.com:LinuxIsCool/omnimind-public.git
+  Notes:
+    url: git@github.com:LinuxIsCool/Notes.git
+  mothership-plugins:
+    url: git@github.com:LinuxIsCool/mothership-plugins.git
+  mothership-notes:
+    url: git@github.com:LinuxIsCool/mothership-notes.git
+  claude-plugins-public:
+    url: git@github.com:LinuxIsCool/claude-plugins-public.git
+  claude-plugins3-public:
+    url: git@github.com:LinuxIsCool/claude-plugins3-public.git
+  claude-plugins:
+    url: git@github.com:LinuxIsCool/claude-plugins.git
   agentnet:
     url: git@github.com:LinuxIsCool/agentnet.git
   mothership-bridge:
@@ -17,3 +34,16 @@ linuxiscool:
     url: git@github.com:LinuxIsCool/mothership-local.git
   website:
     url: git@github.com:LinuxIsCool/website.git
+  claude-resources:
+    url: git@github.com:LinuxIsCool/claude-resources.git
+
+jlia0:
+  tinyclaw:
+    url: https://github.com/jlia0/tinyclaw.git
+
+omniharmonic:
+  opal:
+    url: https://github.com/omniharmonic/opal.git
+
+_orgs:
+  - linuxiscool

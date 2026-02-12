@@ -33,13 +33,19 @@
         "source": "github",
         "repo": "OthmanAdi/planning-with-files"
       }
+    },
+    "local-resources": {
+      "source": {
+        "source": "directory",
+        "path": ".claude/local/resources/linuxiscool/claude-resources"
+      }
     }
-
   },
   "enabledPlugins": {
     "temporal@linuxiscool-claude-plugins-public": true,
     "koi@regen-ai": true,
     "ledger@regen-ai": true,
-    "planning-with-files@planning-with-files": true
+    "planning-with-files@planning-with-files": true,
+    "claude-resources@claude-resources": true
   }
 }
